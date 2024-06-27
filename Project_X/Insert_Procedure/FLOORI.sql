@@ -1,0 +1,22 @@
+CREATE PROCEDURE FLOORI
+ @Code INT
+,@RecordStatusID INT
+AS
+BEGIN
+	IF NOT EXISTS(SELECT 1 FROM Floor WHERE Code = @Code)
+	BEGIN
+		INSERT INTO Floor (Code,RecordStatusID)
+		VALUES (@Code,@RecordStatusID)
+	END
+END
+ 
+
+ SELECT * FROM FLOOR
+
+ EXEC dbo.FLOORI 1,1
+ EXEC dbo.FLOORI 2,1
+ EXEC dbo.FLOORI 3,1
+ EXEC dbo.FLOORI 4,1
+ EXEC dbo.FLOORI 5,1
+ EXEC dbo.FLOORI 6,1
+

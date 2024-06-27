@@ -1,0 +1,20 @@
+CREATE PROCEDURE BANKI
+@Name VARCHAR(225)
+,@address VARCHAR(4000)
+,@phone VARCHAR(10)
+,@RecordStatusID INT
+AS
+BEGIN
+	IF NOT EXISTS(SELECT 1 FROM Bank WHERE NAME = @Name)
+	BEGIN
+		INSERT INTO Bank(Name,address,phone,RecordStatusID)
+		VALUES (@Name,@address,@phone,@RecordStatusID)
+	END
+END
+ 
+
+ SELECT * FROM Bank
+
+ EXEC dbo.BANKI 'ANDHRABANK', 'ANDHRAPREDESH, GUNTUR(D), NARASARAOPET(M),BANK STREET','900000000009',1
+
+ 
